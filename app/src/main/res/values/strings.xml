@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Band Game Poc</string>
+    <string name="test">TEST</string>
+    <string name="players">Players:</string>
+    <string name="start">START</string>
+    <string name="torso">Torso</string>
+    <string name="right_wrist">Right Wrist</string>
+    <string name="left_wrist">Left Wrist</string>
+    <string name="band_unused">(band unused)</string>
+    <string name="player">Player:</string>
+    <string name="left_calf">Left Calf</string>
+    <string name="right_calf">Right Calf</string>
+    <string name="save">Save</string>
+    <string name="revert">Revert</string>
+    <string name="calibration">Calibration:</string>
+    <string name="association">Association:</string>
+    <string name="timestamp">Timestamp:</string>
+    <string name="rotation">Rotation:</string>
+    <string name="acceleration">Acceleration:</string>
+    <string name="band">Band:</string>
+    <string name="reset_calibration">Reset Calibration</string>
+</resources>

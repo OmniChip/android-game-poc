@@ -1,0 +1,45 @@
+#!/bin/bash
+FILES=(
+	12661__www-bonson-ca__zipper-handsaw-01.wav
+	494129__wlabarron__hotel-room-door-locking.aiff
+	tts.simon-says.json
+	^tts.hand.json
+	^tts.leg.json
+	^tts.left.json
+	^tts.right.json
+	^tts.down.json
+	^tts.low.json
+	^tts.level.json
+	^tts.high.json
+	^tts.up.json
+	^tts.squat.json
+	tts.player-one.json
+	tts.player-two.json
+	tts.player-three.json
+	tts.player-four.json
+	tts.wins.json
+)
+
+opts=()
+inputs=()
+declare -i i=0
+for f in "${FILES[@]}"; do
+	if [ "x$f" != "x${f#^}" ]; then
+		f=${f#^}
+		opts+=(-filter:a:$i "atempo=2")
+	fi
+	if [ "x$f" != "x${f%.json}" ]; then
+		wf=${f%.json}.wav
+		jq -r .audioContent "$f" | base64 -d > "$wf"
+		f=$wf
+	fi
+	inputs+=('-i' "$f")
+	opts+=(-map "$i" -ac 1)
+	i=i+1
+done
+
+opts+=(-codec:a libvorbis)
+opts+=(-map_metadata -1)
+
+rm -f combined.mkv
+exec /usr/bin/ffmpeg "${inputs[@]}" "${opts[@]}" combined.mkv

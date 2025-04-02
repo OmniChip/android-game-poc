@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/band_element" />
+
+    <NumberPicker
+        android:id="@+id/player_num"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/band_element" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="@string/player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_num"
+        app:layout_constraintBottom_toBottomOf="@id/player_num"
+        />
+
+    <TextView
+        android:id="@+id/assoc_none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/band_unused"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/player_num"
+        app:layout_constraintStart_toEndOf="@id/textView7"
+        app:layout_constraintTop_toTopOf="@id/textView7" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/grp_strap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/player_num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/strap_hand_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:labelFor="@id/strap_torso"
+            android:layoutDirection="rtl"
+            android:tag="0"
+            android:text="@string/left_wrist"
+            app:layout_constraintEnd_toStartOf="@id/center_straps"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/strap_hand_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:tag="1"
+            android:text="@string/right_wrist"
+            app:layout_constraintStart_toEndOf="@id/center_straps"
+            app:layout_constraintTop_toTopOf="@id/strap_hand_left" />
+
+        <RadioButton
+            android:id="@+id/strap_torso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:tag="4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/strap_hand_left"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/strap_torso_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="@string/torso"
+            android:textColor="@android:color/primary_text_light"
+            app:layout_constraintBottom_toBottomOf="@id/strap_torso"
+            app:layout_constraintStart_toEndOf="@+id/strap_torso"
+            app:layout_constraintTop_toTopOf="@id/strap_torso"
+            android:focusable="true" />
+
+        <RadioButton
+            android:id="@+id/strap_leg_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layoutDirection="rtl"
+            android:tag="2"
+            android:text="@string/left_calf"
+            app:layout_constraintEnd_toStartOf="@id/center_straps"
+            app:layout_constraintTop_toBottomOf="@id/strap_torso" />
+
+        <RadioButton
+            android:id="@+id/strap_leg_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:tag="3"
+            android:text="@string/right_calf"
+            app:layout_constraintStart_toEndOf="@id/center_straps"
+            app:layout_constraintTop_toTopOf="@id/strap_leg_left" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_straps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/calib_reset">
+
+        <Button
+            android:id="@+id/assoc_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:text="@string/save" />
+
+        <Button
+            android:id="@+id/assoc_revert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:text="@string/revert" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/calib_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_calibration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grp_strap" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
